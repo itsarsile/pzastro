@@ -3,12 +3,14 @@ import { Image } from "astro:assets";
 import PaztGLogo from "../assets/images/paztg-logo.png";
 ---
 
-<header>
-	<nav class="navbar bg-base-300 pt-5">
+<header class="fixed w-full transition-all" id="navbar">
+	<div class="px-5">
+	<nav class="hidden lg:navbar ">
 		<!-- Desktop View -->
-		<div class="lg:flex flex-col justify-center w-full hidden">
-			<img src={PaztGLogo.src} alt="Logo" class="invert w-12 h-12" />
-			<ul class="menu menu-horizontal">
+		<div class="flex-1  ">
+			<img src={PaztGLogo.src} alt="Logo" class="h-12 w-12 invert" />
+		</div>
+			<ul class="menu  menu-horizontal flex-none">
 				<li>
 					<a href="">Items 1</a>
 				</li>
@@ -19,15 +21,15 @@ import PaztGLogo from "../assets/images/paztg-logo.png";
 					<a href="">Items 1</a>
 				</li>
 			</ul>
-		</div>
+	</nav>
 		<!-- Mobile View -->
-		<div class="lg:hidden">
+		<nav class="navbar lg:hidden">
 			<div class="navbar-start">
-				<img src={PaztGLogo.src} alt="Logo" class="invert w-12 h-12" />
+				<img src={PaztGLogo.src} alt="Logo" class="h-12 w-12 invert" />
 			</div>
 			<div class="navbar-end">
 				<div class="dropdown dropdown-end">
-					<label tabindex="0" class="btn btn-ghost btn-circle">
+					<label tabindex="0" class="btn btn-circle btn-ghost">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-5 w-5"
@@ -43,7 +45,7 @@ import PaztGLogo from "../assets/images/paztg-logo.png";
 					</label>
 					<ul
 						tabindex="0"
-						class="menu dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 rounded-box w-52"
+						class="menu dropdown-content z-[1] mt-3 w-52 rounded-box bg-base-300 p-2 shadow"
 					>
 						<li>
 							<a href="">Items 1</a>
@@ -57,6 +59,23 @@ import PaztGLogo from "../assets/images/paztg-logo.png";
 					</ul>
 				</div>
 			</div>
-		</div>
-	</nav>
+		</nav>
+	</div>
 </header>
+
+<script>
+	let navbar = document.getElementById("navbar")	
+
+	function checkScroll() {
+		let scrollY =  window.scrollY;
+		if (scrollY > 0) {
+			// Add a navbar sticky animation here
+			navbar?.classList.add('bg-base-300')
+		} else {
+			navbar?.classList.remove('bg-base-300')
+		}
+	}
+
+	// add the event listener
+	window.addEventListener('scroll', checkScroll)
+</script>
