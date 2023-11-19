@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import PaztGLogo from "../assets/images/paztg-logo.png";
+import { siBehance, siYoutube } from "simple-icons";
+---
+
+<footer
+    class="footer footer-center items-center p-4 bg-base-300 text-neutral-content"
+>
+    <aside class="items-center">
+        <img src={PaztGLogo.src} alt="logo" class="w-8 h-8 invert" />
+        <p>Copyright © 2023 - All right reserved</p>
+    </aside>
+    <nav>
+        <div class="grid grid-flow-col gap-4">
+            <a href="https://www.behance.net/paztgfx" target="_blank"
+                ><Image
+                    src={`https://cdn.simpleicons.org/${siBehance.slug}/white`}
+                    alt="behance"
+                    width={16}
+                    height={16}
+                /></a
+            >
+            <a href="https://www.youtube.com/@PaztG" target="_blank">
+                <Image
+                    src={`https://cdn.simpleicons.org/${siYoutube.slug}/white`}
+                    alt="youtube"
+                    width={16}
+                    height={16}
+                />
+            </a>
+        </div>
+    </nav>
+</footer>
