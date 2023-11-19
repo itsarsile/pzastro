@@ -3,12 +3,12 @@ import { Image } from "astro:assets";
 import PaztGLogo from "../assets/images/paztg-logo.png";
 ---
 
-<header class="fixed w-full transition-all" id="navbar">
+<header class="fixed w-full transition-all duration-100" id="navbar">
 	<div class="px-5">
 	<nav class="hidden lg:navbar ">
 		<!-- Desktop View -->
-		<div class="flex-1  ">
-			<img src={PaztGLogo.src} alt="Logo" class="h-12 w-12 invert" />
+		<div class="flex-1">
+			<img src={PaztGLogo.src} alt="Logo" id="logo" class="h-12 w-12 invert transition-all duration-100 drop-shadow-md shadow-white" />
 		</div>
 			<ul class="menu menu-horizontal uppercase font-bold flex-none">
 				<li>
@@ -22,7 +22,7 @@ import PaztGLogo from "../assets/images/paztg-logo.png";
 		<!-- Mobile View -->
 		<nav class="navbar lg:hidden">
 			<div class="navbar-start">
-				<img src={PaztGLogo.src} alt="Logo" class="h-12 w-12 invert" />
+				<img src={PaztGLogo.src} id="logo" alt="Logo" class="h-8 w-8 invert transition-all duration-100" />
 			</div>
 			<div class="navbar-end">
 				<div class="dropdown dropdown-end">
@@ -58,15 +58,19 @@ import PaztGLogo from "../assets/images/paztg-logo.png";
 </header>
 
 <script>
-	let navbar = document.getElementById("navbar")	
-
+	import $ from "cash-dom";
+	let navbar = document.getElementById("navbar");
+	let logo = $("[id^=logo]")
+	console.log("Check", logo)
 	function checkScroll() {
 		let scrollY =  window.scrollY;
 		if (scrollY > 0) {
 			// Add a navbar sticky animation here
-			navbar?.classList.add('bg-base-300')
+			navbar?.classList.add('glass');
+			logo.addClass("invert-0")
 		} else {
-			navbar?.classList.remove('bg-base-300')
+			navbar?.classList.remove('glass')
+			logo.removeClass('invert-0')
 		}
 	}
 
