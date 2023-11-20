@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import YoutubeLazy from "../../components/YoutubeLazy.astro"
 
 export const getStaticPaths = (async () => {
     const works = await getCollection("works");
@@ -15,12 +16,16 @@ const { work } = Astro.props;
 ---
 
 <Layout title={work.data.title}>
-    <main class="h-screen">
+    <main class="flex flex-col gap-5 pb-10">
         <img
             src={work.data.image.src}
             loading="lazy"
             alt={work.data.title}
-            class="aspect-video max-w-screen h-screen mx-auto"
+            width={work.data.image.width}
+            height={work.data.image.height}
+            class="aspect-video mx-auto"
         />
+        <YoutubeLazy />
+        <h1 class="text-center font-extrabold text-xl max-w-lg mx-auto">{work.data.title}</h1>
     </main>
 </Layout>
