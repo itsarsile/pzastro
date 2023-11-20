@@ -4,18 +4,23 @@ import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 
 export const getStaticPaths = (async () => {
-    const works = await getCollection('works')
-    return works.map(work => ({
-        params: { slug: work.id }, props: { work },
+    const works = await getCollection("works");
+    return works.map((work) => ({
+        params: { slug: work.id },
+        props: { work },
     }));
 }) satisfies GetStaticPaths;
 
 const { work } = Astro.props;
 ---
+
 <Layout title={work.data.title}>
     <main class="h-screen">
-        <div>
-            <img src={work.data.image.src} class="aspect-video max-w-screen h-screen mx-auto"/>
-        </div>
+        <img
+            src={work.data.image.src}
+            loading="lazy"
+            alt={work.data.title}
+            class="aspect-video max-w-screen h-screen mx-auto"
+        />
     </main>
 </Layout>
