@@ -1,7 +1,22 @@
 ---
-import { Image } from "astro:assets";
-
+import { getCollection } from "astro:content";
+const works = await getCollection("works");
 ---
-<div>
-    <Image class="w-96" src="https://img.youtube.com/vi/T8Q7kLTA07Q/maxresdefault.jpg" width={1280} height={720} alt="thumbnail"/>
+
+<div class="grid lg:grid-cols-5 md:grid-cols-4 grid-flow-row -z-1">
+    {
+        works.map(async (work) => {
+            return (
+                <div class="mask mask-works w-full">
+                    <img
+                        class="transition-all hover:scale-105 aspect-video"
+                        loading="lazy"
+                        width={work.data.image.width}
+                        alt={work.data.title}
+                        src={work.data.image.src}
+                    />
+                </div>
+            );
+        })
+    }
 </div>
