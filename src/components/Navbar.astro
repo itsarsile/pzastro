@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import PaztGLogo from "../assets/images/paztg-logo.png";
 ---
 
-<header class="fixed w-full transition-all duration-100 z-10" id="navbar">
+<header class="fixed w-full transition-all duration-300 z-10" id="navbar">
 	<div class="px-5">
 	<nav class="hidden lg:navbar">
 		<!-- Desktop View -->
@@ -22,7 +22,7 @@ import PaztGLogo from "../assets/images/paztg-logo.png";
 		<!-- Mobile View -->
 		<nav class="navbar lg:hidden">
 			<div class="navbar-start">
-				<img src={PaztGLogo.src} id="logo" alt="Logo" class="h-8 w-8 invert transition-all duration-100" />
+				<img src={PaztGLogo.src} id="logo" alt="Logo" class="h-8 w-8 invert transition-all duration-300" />
 			</div>
 			<div class="navbar-end">
 				<div class="dropdown dropdown-end">
@@ -42,7 +42,7 @@ import PaztGLogo from "../assets/images/paztg-logo.png";
 					</label>
 					<ul
 						tabindex="0"
-						class="menu dropdown-content z-[1] mt-3 w-52 rounded-box bg-base-300 p-2 shadow"
+						class="menu dropdown-content z-[1] mt-5 w-52 rounded-box bg-base-300/80 p-2 shadow glass"
 					>
 						<li>
 							<a href="">About</a>
@@ -59,7 +59,7 @@ import PaztGLogo from "../assets/images/paztg-logo.png";
 
 <script>
 	import $, { Cash } from "cash-dom";
-	let navbar = document.getElementById("navbar");
+	let navbar = $("#navbar");
 	let logo = $("[id^=logo]");
 	let menuItemsDesktop = $("[id^=desktop-nav]").find("ul li a")
 	let menuSVG = $("#menu-svg")
@@ -68,12 +68,12 @@ import PaztGLogo from "../assets/images/paztg-logo.png";
 		let scrollY =  window.scrollY;
 		if (scrollY > 0) {
 			// Add a navbar sticky animation here
-			navbar?.classList.add('glass');
+			navbar.addClass('glass py-1');
 			logo.addClass("invert-0");
 			menuItemsDesktop.addClass("text-neutral")
 			menuSVG.addClass("text-neutral")
 		} else {
-			navbar?.classList.remove('glass');
+			navbar.removeClass('glass py-1');
 			logo.removeClass('invert-0');
 			menuItemsDesktop.removeClass("text-neutral")
 			menuSVG.removeClass("text-neutral")
