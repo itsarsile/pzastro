@@ -7,15 +7,17 @@ const works = await getCollection("works");
     {
         works.map(async (work) => {
             return (
-                <div class="mask mask-works w-full animate-fade-in delay-200">
-                    <img
-                        class="transition-all hover:scale-105 aspect-video"
-                        loading="lazy"
-                        width={work.data.image.width}
-                        alt={work.data.title}
-                        src={work.data.image.src}
-                    />
-                </div>
+                <a href={`/works/${work.id}`}>
+                    <div class="mask mask-works w-full animate-fade-in delay-200" transition:name={work.data.title}>
+                        <img
+                            class="transition-all hover:scale-105 aspect-video"
+                            loading="lazy"
+                            width={work.data.image.width}
+                            alt={work.data.title}
+                            src={work.data.image.src}
+                        />
+                    </div>
+                </a>
             );
         })
     }
