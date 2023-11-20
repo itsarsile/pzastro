@@ -13,9 +13,9 @@ export const getStaticPaths = (async () => {
 const { work } = Astro.props;
 ---
 <Layout title={work.data.title}>
-    <main>
+    <main class="h-screen">
         <div>
-            <img src={work.data.image.src} class="aspect-video max-w-screen lg:max-w-screen-lg mx-auto"/>
+            <img src={work.data.image.src} class="aspect-video max-w-screen h-screen mx-auto"/>
         </div>
     </main>
 </Layout>
