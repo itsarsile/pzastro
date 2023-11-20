@@ -5,12 +5,20 @@ import PaztGLogo from "../assets/images/paztg-logo.png";
 
 <header class="fixed w-full transition-all duration-300 z-10" id="navbar">
 	<div class="px-5">
-	<nav class="hidden lg:navbar">
-		<!-- Desktop View -->
-		<div class="flex-1">
-			<img src={PaztGLogo.src} alt="Logo" id="logo" class="h-12 w-12 invert transition-all duration-100 drop-shadow-md shadow-white" />
-		</div>
-			<ul class="menu menu-horizontal uppercase font-bold flex-none" id="desktop-nav">
+		<nav class="hidden lg:navbar">
+			<!-- Desktop View -->
+			<div class="flex-1">
+				<img
+					src={PaztGLogo.src}
+					alt="Logo"
+					id="logo"
+					class="h-12 w-12 invert transition-all duration-100 drop-shadow-md shadow-white"
+				/>
+			</div>
+			<ul
+				class="menu menu-horizontal uppercase font-bold flex-none"
+				id="desktop-nav"
+			>
 				<li>
 					<a href="">About</a>
 				</li>
@@ -18,15 +26,24 @@ import PaztGLogo from "../assets/images/paztg-logo.png";
 					<a href="" class="">Contact</a>
 				</li>
 			</ul>
-	</nav>
+		</nav>
 		<!-- Mobile View -->
 		<nav class="navbar lg:hidden">
 			<div class="navbar-start">
-				<img src={PaztGLogo.src} id="logo" alt="Logo" class="h-8 w-8 invert transition-all duration-300" />
+				<img
+					src={PaztGLogo.src}
+					id="logo"
+					alt="Logo"
+					class="h-8 w-8 invert transition-all duration-300"
+				/>
 			</div>
 			<div class="navbar-end">
 				<div class="dropdown dropdown-end">
-					<label tabindex="0" class="btn btn-circle btn-ghost" id="menu-svg">
+					<label
+						tabindex="0"
+						class="btn btn-circle btn-ghost"
+						id="menu-svg"
+					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							class="h-5 w-5"
@@ -58,29 +75,28 @@ import PaztGLogo from "../assets/images/paztg-logo.png";
 </header>
 
 <script>
-	import $, { Cash } from "cash-dom";
+	import $ from "cash-dom";
 	let navbar = $("#navbar");
 	let logo = $("[id^=logo]");
-	let menuItemsDesktop = $("[id^=desktop-nav]").find("ul li a")
-	let menuSVG = $("#menu-svg")
+	let menuItemsDesktop = $("[id^=desktop-nav]").find("ul li a");
+	let menuSVG = $("#menu-svg");
 
 	function checkScroll() {
-		let scrollY =  window.scrollY;
+		let scrollY = window.scrollY;
 		if (scrollY > 0) {
 			// Add a navbar sticky animation here
-			navbar.addClass('glass py-1');
+			navbar.addClass("glass py-1");
 			logo.addClass("invert-0");
-			menuItemsDesktop.addClass("text-neutral")
-			menuSVG.addClass("text-neutral")
+			menuItemsDesktop.addClass("text-neutral");
+			menuSVG.addClass("text-neutral");
 		} else {
-			navbar.removeClass('glass py-1');
-			logo.removeClass('invert-0');
-			menuItemsDesktop.removeClass("text-neutral")
-			menuSVG.removeClass("text-neutral")
-
+			navbar.removeClass("glass py-1");
+			logo.removeClass("invert-0");
+			menuItemsDesktop.removeClass("text-neutral");
+			menuSVG.removeClass("text-neutral");
 		}
 	}
 
 	// add the event listener
-	window.addEventListener('scroll', checkScroll)
+	window.addEventListener("scroll", checkScroll);
 </script>
