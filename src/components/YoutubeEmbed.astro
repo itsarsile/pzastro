@@ -1,0 +1,21 @@
+---
+const { videoID, image } = Astro.props;
+---
+
+<link
+    rel="stylesheet"
+    href="../../node_modules/lite-youtube-embed/src/lite-yt-embed.css"
+/>
+<script src="../../node_modules/lite-youtube-embed/src/lite-yt-embed.js"
+></script>
+<div
+    class="lg:w-2/3 m-auto py-4 relative video-container"
+>
+    <lite-youtube
+        videoid={`${videoID}`}
+        style={`background-image: url(${image}); max-width: 100%`}
+        class="rounded-md m-auto"
+    >
+    </lite-youtube>
+    <div class="drop-shadow bg-blue-500"></div>
+</div>

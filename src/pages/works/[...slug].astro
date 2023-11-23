@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import YoutubeEmbed from "../../components/YoutubeEmbed.astro";
 
 export const getStaticPaths = (async () => {
     const works = await getCollection("works");
@@ -15,12 +16,8 @@ const { work } = Astro.props;
 ---
 
 <Layout title={work.data.title}>
-    <main class="h-screen">
-        <img
-            src={work.data.image.src}
-            loading="lazy"
-            alt={work.data.title}
-            class="aspect-video max-w-screen h-screen mx-auto"
-        />
-    </main>
+    <main class="">
+        <YoutubeEmbed videoID={work.data.videoID} image={work.data.image.src}/>
+        <h1 class="text-center text-lg px-4 lg:text-2xl font-extrabold lg:pb-6">{work.data.title}</h1>
+</main>
 </Layout>

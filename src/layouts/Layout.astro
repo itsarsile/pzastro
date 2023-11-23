@@ -20,12 +20,13 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="flex flex-col h-screen justify-between">
 		<Navbar />
 		<div class="pt-16">
 			<slot />
 		</div>
 		<Footer />
+		<script src="../lib/htmx.min.js"></script>
 	</body>
 </html>
 <style>
