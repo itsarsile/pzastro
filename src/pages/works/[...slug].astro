@@ -17,7 +17,7 @@ const { work } = Astro.props;
 ---
 
 <Layout title={work.data.title}>
-    <main class="">
+    <main class="animate-fade-in">
         <YoutubeEmbed videoID={work.data.videoID} image={work.data.image.src}/>
         <h1 class="text-center text-lg px-4 lg:text-2xl font-extrabold lg:pb-6">{work.data.title}</h1>
 </main>
