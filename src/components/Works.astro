@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 const works = await getCollection("works");
 ---
 
-<div class="grid lg:grid-cols-5 md:grid-cols-4 grid-flow-row -z-1">
+<div class="grid lg:grid-cols-5 md:grid-cols-4 grid-flow-row -z-1 overflow-hidden">
     {
         works.map(async (work) => {
             return (
