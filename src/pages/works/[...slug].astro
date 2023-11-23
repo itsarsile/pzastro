@@ -3,6 +3,7 @@ import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import YoutubeEmbed from "../../components/YoutubeEmbed.astro";
+import YoutubeLazy from "../../components/YoutubeLazy.astro"
 
 export const getStaticPaths = (async () => {
     const works = await getCollection("works");
