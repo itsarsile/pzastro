@@ -3,14 +3,21 @@ import { getCollection } from "astro:content";
 const works = await getCollection("works");
 ---
 
-<div class="grid lg:grid-cols-5 md:grid-cols-4 grid-flow-row -z-1 overflow-hidden">
+<div
+    class="grid lg:grid-cols-3 md:grid-cols-2 grid-flow-row -z-1 overflow-hidden" id="worksContainer"
+>
     {
         works.map(async (work) => {
             return (
-                <a href={`/works/${work.id}`}>
-                    <div class="mask mask-works w-full animate-fade-in delay-200" transition:name={work.data.title}>
+                <a href={`/works/${work.id}`} >
+                    <div
+                        class="mask mask-works w-full animate-fade-in delay-200 duration-300 group relative"
+                        
+                    >
+                    <div class="opacity-0 group-hover:opacity-100 duration-100 absolute z-10 flex justify-center items-center text-xl text-center font-bold h-full w-full bg-gray-950/80">{work.data.title}</div>
+
                         <img
-                            class="transition-all hover:scale-105 aspect-video"
+                            class="transition-all group-hover:scale-105 aspect-video"
                             loading="lazy"
                             width={work.data.image.width}
                             alt={work.data.title}
