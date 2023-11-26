@@ -1,6 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-const recaptchaSrc = `https://www.google.com/recaptcha/api.js?render=${import.meta.env.PUBLIC_SITEKEY}`
+const recaptchaSrc = `https://www.google.com/recaptcha/api.js?render=${
+    import.meta.env.PUBLIC_SITEKEY
+}`;
 ---
 
 <head>
@@ -35,7 +37,7 @@ const recaptchaSrc = `https://www.google.com/recaptcha/api.js?render=${import.me
         </form>
     </div>
 </Layout>
-    <!-- <script is:inline>
+<!-- <script is:inline>
         function onSubmit(token) {
         fetch("/recaptcha", {
           method: "POST",
@@ -52,24 +54,21 @@ const recaptchaSrc = `https://www.google.com/recaptcha/api.js?render=${import.me
       }
     </script> -->
 
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", function () {
+        let params = new URLSearchParams(document.location.search);
+        const titleInput = document.getElementById("title");
+        const bodyInput = document.getElementById("body");
 
-<script>
-    import $ from "cash-dom";
-    let params = new URLSearchParams(document.location.search);
-    const titleInput = $("#title");
-    const bodyInput = $("#body");
+        let title = params.get("title") || "";
+        let body = params.get("body") || "";
 
-    let title = params.get("title") || "";
-    let body = params.get("body") || "";
-    console.log(body);
-    $(window).ready(() => {
-        if (titleInput.length > 0) {
-            titleInput.val(title);
+        if (titleInput) {
+            titleInput.value = title;
         }
 
-        if (bodyInput.length > 0) {
-            bodyInput.val(body);
+        if (bodyInput) {
+            bodyInput.value = body;
         }
     });
-
 </script>
