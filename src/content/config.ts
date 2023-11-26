@@ -10,6 +10,14 @@ const worksCollection = defineCollection({
 	})
 })
 
+const aboutCollection = defineCollection({
+	type: 'content',
+	schema: z.object({
+		body: z.string()
+	})
+})
+
 export const collections = { 
-	'works': worksCollection
+	'works': worksCollection,
+	'about': aboutCollection
  };

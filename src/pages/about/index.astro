@@ -1,0 +1,21 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import AboutLayout from "../../layouts/about/AboutLayout.astro";
+import {getEntry} from "astro:content"
+
+const about = await getEntry('about', 'about'); 
+---
+
+<Layout title="About - PaztG Design">
+    <AboutLayout>
+        <h1 class="text-2xl font-bold text-center">
+            ABOUT
+        </h1>
+        <article class="prose prose-slate">
+            {about?.body}
+        </article>
+        <div class="text-2xl font-bold">
+            Click Me!
+        </div>
+    </AboutLayout>
+</Layout>
