@@ -1,37 +1,55 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+const recaptchaSrc = `https://www.google.com/recaptcha/api.js?render=${import.meta.env.PUBLIC_SITEKEY}`
 ---
 
 <Layout title="Contact - PaztG Design">
     <div class="mx-auto max-w-4xl">
         <h1 class="text-2xl font-black text-center">Contact</h1>
-        <form class="form-control mx-auto max-w-xl p-5 lg:p-0">
+        <form
+            class="form-control mx-auto max-w-xl p-5 lg:p-0"
+            id="contact-form"
+        >
             <label for="" class="label">
-                <div class="label-text">Title</div>
+                <div class="label-text">Send me an email!</div>
             </label>
-            <input type="text" class="input input-bordered max-w-xl mb-5" id="title"/>
-            <textarea class="textarea textarea-bordered h-48 mb-5" placeholder="Bio" id="body"></textarea>
-            <button class="btn btn-primary">Send</button>
+            <input
+                type="text"
+                class="input input-bordered max-w-xl mb-5"
+                id="title"
+                placeholder="Title"
+            />
+            <textarea
+                class="textarea textarea-bordered h-48 mb-5"
+                placeholder="Body"
+                id="body"></textarea>
+            <button
+                class="btn btn-primary g-recaptcha"
+                data-sitekey="6LcEcx0pAAAAADpCN2VUjFnI6_hGLzEmD_RO01Zx"
+                data-callback="onSubmit"
+                data-action="submit">Send</button
+            >
         </form>
     </div>
 </Layout>
 
+<script src="https://www.google.com/recaptcha/api.js"></script>
 <script>
-    import $ from "cash-dom"
-    let params = new URLSearchParams(document.location.search)
-    const titleInput = $('#title')
-    const bodyInput = $("#body")
+    import $ from "cash-dom";
+    let params = new URLSearchParams(document.location.search);
+    const titleInput = $("#title");
+    const bodyInput = $("#body");
 
-    let title = params.get("title") || ""
-    let body = params.get("body") || ""
-    console.log(body)
+    let title = params.get("title") || "";
+    let body = params.get("body") || "";
+    console.log(body);
     $(window).ready(() => {
         if (titleInput.length > 0) {
-            titleInput.val(title)
+            titleInput.val(title);
         }
 
         if (bodyInput.length > 0) {
-            bodyInput.val(body)
+            bodyInput.val(body);
         }
-    })
+    });
 </script>
