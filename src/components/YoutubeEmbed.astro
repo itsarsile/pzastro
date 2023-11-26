@@ -6,7 +6,7 @@ const { videoID, image } = Astro.props;
 >
     <lite-youtube
         videoid={`${videoID}`}
-        style={`background-image: url(${image}); max-width: 100%`}
+        style={`background-image: url(${image}); max-width: 100%; width: '1920px'; height: '1080px'`}
         class="rounded-md m-auto"
     >
     </lite-youtube>
