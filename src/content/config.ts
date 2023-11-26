@@ -13,7 +13,7 @@ const worksCollection = defineCollection({
 const aboutCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
-		body: z.string()
+		title: z.string()
 	})
 })
 

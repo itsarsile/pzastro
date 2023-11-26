@@ -1,9 +1,11 @@
 ---
+import Timeline from "../../components/Timeline.astro";
 import Layout from "../../layouts/Layout.astro";
 import AboutLayout from "../../layouts/about/AboutLayout.astro";
 import {getEntry} from "astro:content"
 
-const about = await getEntry('about', 'about'); 
+const about = await getEntry('about', 'about')
+const { Content, headings } = await about.render()
 ---
 
 <Layout title="About - PaztG Design">
@@ -12,10 +14,8 @@ const about = await getEntry('about', 'about');
             ABOUT
         </h1>
         <article class="prose prose-slate">
-            {about?.body}
+            <Content />
         </article>
-        <div class="text-2xl font-bold">
-            Click Me!
-        </div>
+        <Timeline />
     </AboutLayout>
 </Layout>

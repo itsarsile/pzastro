@@ -1,6 +1,9 @@
 ---
+import Logo from "../../assets/images/paztg-logo.png";
 ---
-
-		<div class="max-w-xl mx-auto flex flex-col gap-5">
+<div class="bg-gradient-to-t from-sky-950/10 to-slate-950/10 relative">
+		<div class="max-w-xl mx-auto flex flex-col gap-5 p-10 lg:p-0 lg:pb-10 relative ">
 			<slot />
 		</div>
+	<img src={Logo.src} class="w-96 absolute top-0 -z-10 opacity-20"/>
+</div>
