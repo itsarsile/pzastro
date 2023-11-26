@@ -1,0 +1,37 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Contact - PaztG Design">
+    <div class="mx-auto max-w-4xl">
+        <h1 class="text-2xl font-black text-center">Contact</h1>
+        <form class="form-control mx-auto max-w-xl p-5 lg:p-0">
+            <label for="" class="label">
+                <div class="label-text">Title</div>
+            </label>
+            <input type="text" class="input input-bordered max-w-xl mb-5" id="title"/>
+            <textarea class="textarea textarea-bordered h-48 mb-5" placeholder="Bio" id="body"></textarea>
+            <button class="btn btn-primary">Send</button>
+        </form>
+    </div>
+</Layout>
+
+<script>
+    import $ from "cash-dom"
+    let params = new URLSearchParams(document.location.search)
+    const titleInput = $('#title')
+    const bodyInput = $("#body")
+
+    let title = params.get("title") || ""
+    let body = params.get("body") || ""
+    console.log(body)
+    $(window).ready(() => {
+        if (titleInput.length > 0) {
+            titleInput.val(title)
+        }
+
+        if (bodyInput.length > 0) {
+            bodyInput.val(body)
+        }
+    })
+</script>

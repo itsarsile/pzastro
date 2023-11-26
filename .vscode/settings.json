@@ -4,5 +4,6 @@
     ],
     "files.associations": {
         "*.mdoc": "markdown"
-    }
+    },
+    "discord.enabled": true
 }

@@ -17,7 +17,18 @@ const aboutCollection = defineCollection({
 	})
 })
 
+const productCollection = defineCollection({
+	type: 'data',
+	schema: z.object({
+		name: z.string(),
+		price: z.string(),
+		type: z.enum(["video", "graphic"]).optional(),
+		estimatedTime: z.string(),
+	})
+})
+
 export const collections = { 
 	'works': worksCollection,
-	'about': aboutCollection
+	'about': aboutCollection,
+	'products': productCollection,
  };

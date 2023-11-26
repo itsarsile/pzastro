@@ -1,18 +1,36 @@
 ---
-
+interface Props {
+    name: string;
+    price: string;
+    estimatedTime: string;
+    type?: "video" | "graphic";
+}
+const { name, price, estimatedTime, type } = Astro.props;
 ---
 
-<div class="card w-72 bg-base-200 shadow-xl">
-    <div class="card-body text-center ">
+<div class="card bg-base-200 shadow-xl relative group">
+    <div class="card-body text-center">
+        <div class="font-semibold">
+            <p>{name}</p>
+        </div>
+        <div class="font-black text-4xl">
+            <p>{price}</p>
+        </div>
+        <div class="tooltip" data-tip="Estimated working time">
+            <p class="">{estimatedTime}</p>
+        </div>
     </div>
+    <a href={`/contact?title=Commissions - ${name}&body=Hello PaztG! I want to order this commissions, can you reply this email immediately?`} class="btn bg-primary/20 opacity-100 w-full">
+        <i data-lucide="shopping-cart"></i>
+        Order Now
+    </a>
 </div>
-<div class="card w-72 bg-base-200 shadow-xl">
-    <div class="card-body">
-        <div class="card-title">Stinger Transition</div>
-    </div>
-</div>
-<div class="card w-72 bg-base-200 shadow-xl">
-    <div class="card-body">
-        <div class="card-title">Stinger Transition</div>
-    </div>
-</div>
+
+<script>
+    import { createIcons ,ShoppingCart } from "lucide";
+    createIcons({
+        icons: {
+            ShoppingCart,
+        }
+    })
+</script>
